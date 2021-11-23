@@ -1,3 +1,4 @@
+from controladores import controladorRegistro
 
 opcion=int(0)
 while opcion!=5:
@@ -13,9 +14,19 @@ while opcion!=5:
     opcion=int(input('  Ingrese la Opcion'))
 
     if opcion==1:
-        print(' ')
-        print('  SE REGISTRARA UN CLIENTE  ')
-        nombre=input(' ingree el nombre:')
+        
+        try:
+            print(' ')
+            print('  SE REGISTRARA UN CLIENTE  ')
+            documento=input(' Ingrese el documento del Cliente: ')
+            nombre=input(' ingrese el nombre del Cliente: ')
+            movil=input(' ingrese el Numero de Movil del Cliente: ')
+            saldo=int(input(' ingrese el saldo Principal: '))
+            
+            registro=controladorRegistro.RegistrarCliente(documento, nombre, movil, saldo)
+            print('se ha registrado correctamente')
+        except Exception as Ex:
+            print ('ha ocurrido un error, verifique los datos')
         
     elif opcion==2:
         pass
