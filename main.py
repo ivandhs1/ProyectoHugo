@@ -1,4 +1,4 @@
-from controladores import controladorRegistro, controladorBusqueda
+from controladores import controladorRegistro, controladorBusqueda, controladorActualizar
 
 opcion=int(0)
 while opcion!=5:
@@ -44,7 +44,45 @@ while opcion!=5:
                 print("  Cliente no encontrado.")
         except Exception as Ex:
             print ('ha ocurrido un error, verifique los datos')
+            
     elif opcion==3:
-        pass
+        
+        try:
+            
+            print(' ')
+            print('   SE MODIFICARA UN CLIENTE  ')
+            documento=input(' ingrese el documento del cliente: ')
+            
+            busqueda=controladorBusqueda.BuscarCliente(documento)
+
+            if len(busqueda)!=0:
+                print("  El cliente que Modificara es: \n")
+                print("Documento | Nombre | Movil | Saldo")
+                print(busqueda[0])
+                
+                print(' Que desea modificar?:')
+                print(' 1. Nombre')
+                print(' 2. Movil')
+                opcion=int(input(' DIGITE SU OPCION:  '))
+                
+                if opcion==1:
+                    print(' ')
+                    nombre=input('  Ingrese el nuevo Nombre:')
+                    actualizar=controladorActualizar.ActualizarNombre(documento,nombre)
+                    print(' Se ha actualizado correctamente ')
+                    
+                elif opcion==2:
+                    print(' ')
+                    movil=input(' Ingrese el nuevo movil del Cliente: ')
+                    actualiza=controladorActualizar.ActualizaMovil(documento,movil)
+                    print(' Se ha actualizado correctamente ')
+                                
+            else:
+                print("  Cliente no encontrado.")
+            
+            
+        except Exception as Ex:
+            pass
+        
     elif opcion==4:
         pass
