@@ -1,4 +1,4 @@
-from controladores import controladorRegistro
+from controladores import controladorRegistro, controladorBusqueda
 
 opcion=int(0)
 while opcion!=5:
@@ -29,7 +29,21 @@ while opcion!=5:
             print ('ha ocurrido un error, verifique los datos')
         
     elif opcion==2:
-        pass
+        try:
+            print(' ')
+            print('  SE BUSCARA UN CLIENTE  ')
+            documento=input(' Ingrese el documento del Cliente: ')
+            
+            busqueda=controladorBusqueda.BuscarCliente(documento)
+
+            if len(busqueda)!=0:
+                print("  El cliente buscado es: \n")
+                print("Documento | Nombre | Movil | Saldo")
+                print(busqueda[0])
+            else:
+                print("  Cliente no encontrado.")
+        except Exception as Ex:
+            print ('ha ocurrido un error, verifique los datos')
     elif opcion==3:
         pass
     elif opcion==4:
