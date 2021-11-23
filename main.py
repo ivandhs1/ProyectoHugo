@@ -1,4 +1,4 @@
-from controladores import controladorRegistro, controladorBusqueda
+from controladores import controladorRegistro, controladorBusqueda, controladorSaldo
 
 opcion=int(0)
 while opcion!=5:
@@ -11,7 +11,7 @@ while opcion!=5:
     print('  3.Modificar Cliente')
     print('  4.Anexar Saldo al Cliente')
     print('  5. Salir')
-    opcion=int(input('  Ingrese la Opcion'))
+    opcion=int(input('  Ingrese la Opcion '))
 
     if opcion==1:
         
@@ -47,4 +47,43 @@ while opcion!=5:
     elif opcion==3:
         pass
     elif opcion==4:
-        pass
+        try:
+            print(' ')
+            print('  AGREGAR SALDO  ')
+            documento=input(' Ingrese el documento del Cliente: ')
+            
+            busqueda=controladorBusqueda.BuscarCliente(documento)
+
+            if len(busqueda)!=0:
+                print("  El saldo del cliente ingresado es: \n")
+                print("Nombre | Saldo")
+                saldo = busqueda[0][3]
+                print(busqueda[0][1]," | ",saldo)
+                print("")
+                print("  MENU SALDO  ")
+                print(" 1. Agregar abono al saldo pendiente.")
+                print(" 2. Agregar saldo pendiente.")
+                print(" 3. Salir.")
+                eleccion = int(input(" ¿Que desea hacer?  "))
+                if eleccion == 1:
+                    ingreso = int(input(' Ingrese el abono al saldo del Cliente: '))
+                    if ingreso> saldo:
+                        print("  No puede abonar mas dinero del que debe, debe: $", saldo, " e ingreso: $", ingreso)
+                    else:
+                        saldoNuevo=saldo-ingreso
+                        controladorSaldo.CambiarDeuda(documento,saldoNuevo)
+
+                        busqueda=controladorBusqueda.BuscarCliente(documento)
+                    print("\n La deuda del cliente queda en: ", busqueda[0][3])
+                elif eleccion == 2:
+                    ingreso = int(input(' Ingrese la nueva deuda del Cliente: '))
+                    saldoNuevo=saldo+ingreso
+                    controladorSaldo.CambiarDeuda(documento,saldoNuevo)
+                    busqueda=controladorBusqueda.BuscarCliente(documento)
+                    print("\n La deuda del cliente queda en: ", busqueda[0][3])
+                else:
+                    print("  Opcion desconocida.")
+            else:
+                print("  Cliente no encontrado.")
+        except Exception as Ex:
+            print ('ha ocurrido un error, verifique los datos')
