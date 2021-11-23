@@ -13,7 +13,10 @@ while opcion!=5:
     opcion=int(input('  Ingrese la Opcion'))
 
     if opcion==1:
-        pass
+        print(' ')
+        print('  SE REGISTRARA UN CLIENTE  ')
+        nombre=input(' ingree el nombre:')
+        
     elif opcion==2:
         pass
     elif opcion==3:
