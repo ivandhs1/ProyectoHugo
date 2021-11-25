@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-from controladores import controladorRegistro, controladorBusqueda, controladorActualizar
-=======
-from controladores import controladorRegistro, controladorBusqueda, controladorSaldo
->>>>>>> main
+from controladores import controladorRegistro, controladorBusqueda, controladorActualizar, controladorSaldo
 
 opcion=int(0)
 while opcion!=5:
