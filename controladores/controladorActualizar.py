@@ -2,10 +2,10 @@ from pymysql.cursors import Cursor
 from bd import Obtener_Conexion
 
 
-def ActualizarNombre(documento,nombre):
+def ActualizarDireccion(documento,direccion):
     conexion = Obtener_Conexion()
     with conexion.cursor() as cursor:
-        cursor.execute("UPDATE clientes SET nombre = %s WHERE documento = %s",(nombre, documento))
+        cursor.execute("UPDATE clientes SET direccion = %s WHERE documento = %s",(direccion, documento))
     conexion.commit()
     conexion.close()
 

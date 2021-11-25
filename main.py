@@ -21,9 +21,10 @@ while opcion!=5:
             documento=input(' Ingrese el documento del Cliente: ')
             nombre=input(' ingrese el nombre del Cliente: ')
             movil=input(' ingrese el Numero de Movil del Cliente: ')
+            direccion=input(' Ingrese la Direccion: ')
             saldo=int(input(' ingrese el saldo Principal: '))
             
-            registro=controladorRegistro.RegistrarCliente(documento, nombre, movil, saldo)
+            registro=controladorRegistro.RegistrarCliente(documento, nombre, movil, saldo, direccion)
             print('se ha registrado correctamente')
         except Exception as Ex:
             print ('ha ocurrido un error, verifique los datos')
@@ -57,26 +58,25 @@ while opcion!=5:
 
             if len(busqueda)!=0:
                 print("  El cliente que Modificara es: \n")
-                print("Documento | Nombre | Movil | Saldo")
+                print("Documento | Nombre | Movil | Direccion | Saldo")
                 print(busqueda[0])
                 
                 print(' Que desea modificar?:')
-                print(' 1. Nombre')
-                print(' 2. Movil')
+                print(' 1. Movil')
+                print(' 2. Direccion')
                 opcion=int(input(' DIGITE SU OPCION:  '))
                 
                 if opcion==1:
                     print(' ')
-                    nombre=input('  Ingrese el nuevo Nombre:')
-                    actualizar=controladorActualizar.ActualizarNombre(documento,nombre)
-                    print(' Se ha actualizado correctamente ')
-                    
-                elif opcion==2:
-                    print(' ')
                     movil=input(' Ingrese el nuevo movil del Cliente: ')
                     actualiza=controladorActualizar.ActualizaMovil(documento,movil)
                     print(' Se ha actualizado correctamente ')
-                                
+                    
+                elif opcion==2:
+                    print(' ')  
+                    direccion=input(' Ingrese la Nueva Direccion') 
+                    actualiza=controladorActualizar.ActualizarDireccion(documento,direccion)
+                    print(' Se ha actualizado correctamente ')  
             else:
                 print("  Cliente no encontrado.")
             
