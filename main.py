@@ -38,7 +38,7 @@ while opcion!=5:
 
             if len(busqueda)!=0:
                 print("  El cliente buscado es: \n")
-                print("Documento | Nombre | Movil | Saldo")
+                print("Documento | Nombre | Movil | Direccion | Saldo ")
                 print(busqueda[0])
             else:
                 print("  Cliente no encontrado.")
@@ -95,7 +95,7 @@ while opcion!=5:
             if len(busqueda)!=0:
                 print("  El saldo del cliente ingresado es: \n")
                 print("Nombre | Saldo")
-                saldo = busqueda[0][3]
+                saldo = busqueda[0][4]
                 print(busqueda[0][1]," | ",saldo)
                 print("")
                 print("  MENU SALDO  ")
@@ -112,13 +112,13 @@ while opcion!=5:
                         controladorSaldo.CambiarDeuda(documento,saldoNuevo)
 
                         busqueda=controladorBusqueda.BuscarCliente(documento)
-                    print("\n La deuda del cliente queda en: ", busqueda[0][3])
+                    print("\n La deuda del cliente queda en: ", busqueda[0][4])
                 elif eleccion == 2:
                     ingreso = int(input(' Ingrese la nueva deuda del Cliente: '))
                     saldoNuevo=saldo+ingreso
                     controladorSaldo.CambiarDeuda(documento,saldoNuevo)
                     busqueda=controladorBusqueda.BuscarCliente(documento)
-                    print("\n La deuda del cliente queda en: ", busqueda[0][3])
+                    print("\n La deuda del cliente queda en: ", busqueda[0][4])
                 else:
                     print("  Opcion desconocida.")
             else:
