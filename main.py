@@ -24,7 +24,7 @@ while opcion!=5:
             direccion=input(' Ingrese la Direccion: ')
             saldo=int(input(' ingrese el saldo Principal: '))
             
-            registro=controladorRegistro.RegistrarCliente(documento, nombre, movil, saldo, direccion)
+            registro=controladorRegistro.RegistrarCliente(documento, nombre, movil,direccion, saldo)
             print('se ha registrado correctamente')
         except Exception as Ex:
             print ('ha ocurrido un error, verifique los datos')
