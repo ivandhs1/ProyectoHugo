@@ -1,0 +1,141 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*LAYOUT*/
+header{
+    height: 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(249,208,4);
+}
+header .logo{
+    width: 15%;
+}
+.logo img{
+    width: 100%;
+}
+.textoheader{
+    width: 35%;
+}
+.textoheader h1{
+    font-size: 500%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+.buscar{
+    width: 35%;
+    height: 6rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(213,222,239);
+}
+.buscar img{
+    width: 12%;
+}
+.buscar input{
+    width: 80%;
+    height: 50px;
+    font-size: 40px;
+    background-color: rgb(213,222,239);
+    border:none;
+}
+footer{
+    height: 8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(249,208,4);
+}
+footer h1{
+    font-size: 450%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+
+/*INDEX*/
+.mainIndex{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.Botones{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.boton1{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
+.red{
+    padding: 10px;
+    background-color: rgb(215,92,87);
+    font-size: 200%;
+    text-decoration: none;
+    color: white;
+}
+.blue{
+    padding: 10px;
+    background-color: rgb(134,248,254);
+    font-size: 200%;
+    text-decoration: none;
+    color: black;
+}
+.tablaIndex{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border: 20px solid rgb(249,208,4);
+    margin: 15px;
+}
+.tabla_Index{
+    background-color: white;
+    margin: 3%;
+    text-align: left;
+    border-collapse: collapse;
+    width: 80%;
+}
+.tabla_Index th{
+    border-top: solid 1px black;
+    height: 4rem;
+    font-size: 150%;
+    text-align: center;
+}
+.tabla_Index td{
+    border: solid 1px black;
+    background-color: rgb(215,92,87);
+    height: 4rem;
+    margin:10px 0 10px 0;
+}
+.tabla_Index thead{
+    border-bottom:solid 1px black ;
+}
+.tabla_Index tr:nth-child(even){
+    background-color:rgb(134,248,254);
+}
+.borde1{
+    border-left: solid 1px black;
+    border-right: solid 3px black;
+}
+.bordeN{
+    border-right: solid 3px black;
+}
+.borde2{
+    border-right: solid 1px black;
+}
