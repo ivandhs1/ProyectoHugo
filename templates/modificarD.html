@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block body %}
+<main class="mainIndex">
+    <section class="tablaIndex">
+        <table class="tabla_Index">
+            <thead>
+
+            </thead>
+            <tbody>
+                <tr> 
+                    <td class="agrandar">Nombre</td>
+                    <td class="agrandar">Deuda pendiente</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        
+    </section>
+    <section class="modifDeud">
+        <input type="text" placeholder="Ingrese monto">
+        <div class="botonesDeuda">
+            <div class="botonDeu1">
+                <a href="/deuda">Deuda</a>
+            </div>
+            <div class="botonDeu1">
+                <a href="/Afavor">A favor</a>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

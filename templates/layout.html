@@ -8,23 +8,25 @@
     <title>Tienda_BCJI</title>
 </head>
 <body>
-    <header>
-        <a href="/index" class="logo"><img  src="static/images/tiendaa.png" alt=""></a>
-        <div class="textoheader">
-            <h1>Tienda_BCJI</h1>
-        </div>
-        <div class="buscar">
-            <input type="text" placeholder="Buscar">
-            <img src="static/images/buscar.png" alt="">
-        </div>
-    </header>
-    <section class="Botones">
-        <div class="boton1">
-            <a href="/crear_cliente" class="red">Crear cliente</a>
-            <a href="/actualizar_cuenta" class="blue">Actualizar cuenta</a>
-            <a href="/modificar_cliente" class="red">Modificar cliente</a>
-        </div>
-    </section>
+    <div class="cabeza">
+        <header>
+            <a href="/index" class="logo"><img  src="static/images/tiendaa.png" alt=""></a>
+            <div class="textoheader">
+                <h1>Tienda_BCJI</h1>
+            </div>
+            <div class="buscar">
+                <input type="text" placeholder="Buscar">
+                <img src="static/images/buscar.png" alt="">
+            </div>
+        </header>
+        <section class="Botones">
+            <div class="boton1">
+                <a href="/crear_cliente" class="red">Crear cliente</a>
+                <a href="/actualizar_cuenta" class="blue">Actualizar cuenta</a>
+                <a href="/modificar_cliente" class="red">Modificar cliente</a>
+            </div>
+        </section>
+    </div>
     {% block body %}
     {% endblock %}
     <footer>

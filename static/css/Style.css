@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /*LAYOUT*/
@@ -83,10 +84,16 @@ footer h1{
 }
 .blue{
     padding: 10px;
-    background-color: rgb(134,248,254);
+    background-color: rgb(134,218,254);
     font-size: 200%;
     text-decoration: none;
     color: black;
+}
+.cabeza{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /*INDEX*/
@@ -128,13 +135,15 @@ thead{
     background-color: rgb(215,92,87);
     height: 4rem;
     margin:10px 0 10px 0;
+    text-align: center;
 }
 
 tr:nth-child(even){
-    background-color:rgb(134,248,254);
+    background-color:rgb(134,218,254);
     height: 4rem;
     margin:10px 0 10px 0;
     border: solid 1px black;
+    text-align: center;
 }
 .borde1{
     border-left: solid 1px black;
@@ -163,7 +172,7 @@ tr:nth-child(even){
     flex-direction: column;
 }
 .crear{
-    width: 80%;
+    width: 90%;
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
@@ -173,13 +182,49 @@ tr:nth-child(even){
 .crear input{
     width: 600px;
     margin-left: 20%;
-    background-color: rgb(134,248,254);
+    background-color: rgb(134,218,254);
     border: none;
 }
 .enviar{
     padding: 1% 2% 1% 2%;
     border-radius: 100px;
-    background-color: rgb(134,248,254);
+    background-color: rgb(134,218,254);
     border: none;
     margin-bottom: 10px;
+}
+/*MODIFICAR DEUDA*/
+.modifDeud{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.botonesDeuda{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.botonDeu1{
+    background-color: rgb(249,208,4);
+    padding: 1% 2% 1% 2%;
+    border-radius: 200px;
+}
+.botonDeu1 a{
+    text-decoration: none;
+    color: black;
+    font-size: 200%;
+}
+.modifDeud input{
+    width: 25%;
+    text-align: center;
+    background-color: rgb(134,218,254);
+    height: 5rem;
+    font-size: 250%;
+    border: none;
+}
+.agrandar{
+    font-size: 200%;
 }
