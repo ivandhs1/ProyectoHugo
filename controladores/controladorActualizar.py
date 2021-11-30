@@ -1,4 +1,4 @@
-from pymysql.cursors import Cursor
+
 from bd import Obtener_Conexion
 
 

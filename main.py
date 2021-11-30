@@ -1,127 +1,50 @@
-from controladores import controladorRegistro, controladorBusqueda, controladorActualizar, controladorSaldo
 
-opcion=int(0)
-while opcion!=5:
+from werkzeug.utils import redirect
+from controladores import controladorRegistro, controladorBusqueda, controladorActualizar, controladorSaldo, controladorLista
+from flask import Flask, render_template, request, url_for
 
-    print(' ')
-    print('         MENU        ')
-    print('  Que Desea Realizar?')
-    print('  1.Crear Cliente')
-    print('  2.Buscar Cliente')
-    print('  3.Modificar Cliente')
-    print('  4.Anexar Saldo al Cliente')
-    print('  5. Salir')
-    opcion=int(input('  Ingrese la Opcion '))
+app=Flask(__name__)
+app.secret_key= 'my_secret_key'
+@app.route('/')
+@app.route('/index')
+def index():
+    clientes=controladorLista.listando()
+    return render_template('index.html',clientes=clientes)
 
-    if opcion==1:
-        
-        try:
-            print(' ')
-            print('  SE REGISTRARA UN CLIENTE  ')
-            documento=input(' Ingrese el documento del Cliente: ')
-            nombre=input(' ingrese el nombre del Cliente: ')
-            movil=input(' ingrese el Numero de Movil del Cliente: ')
-            direccion=input(' Ingrese la Direccion: ')
-            saldo=int(input(' ingrese el saldo Principal: '))
-            
-            registro=controladorRegistro.RegistrarCliente(documento, nombre, movil,direccion, saldo)
-            print('se ha registrado correctamente')
-        except Exception as Ex:
-            print ('ha ocurrido un error, verifique los datos')
-        
-    elif opcion==2:
-        try:
-            print(' ')
-            print('  SE BUSCARA UN CLIENTE  ')
-            documento=input(' Ingrese el documento del Cliente: ')
-            
-            busqueda=controladorBusqueda.BuscarCliente(documento)
+@app.route('/crearCliente')
+def crearCliente():
+    return render_template('crearC.html')
 
-            if len(busqueda)!=0:
-                print("  El cliente buscado es: \n")
-                print("Documento | Nombre | Movil | Direccion | Saldo ")
-                print(busqueda[0])
-            else:
-                print("  Cliente no encontrado.")
-        except Exception as Ex:
-            print ('ha ocurrido un error, verifique los datos')
-            
-    elif opcion==3:
-        
-        try:
-            
-            print(' ')
-            print('   SE MODIFICARA UN CLIENTE  ')
-            documento=input(' ingrese el documento del cliente: ')
-            
-            busqueda=controladorBusqueda.BuscarCliente(documento)
+@app.route('/creandoCliente', methods=["POST"])
+def creandoCliente():
+    nombre = request.form["nombreCliente"]
+    documento = request.form["numeroDoc"]
+    direccion = request.form["direccion"]
+    movil = request.form["numeroCel"]
+    saldo = request.form["saldo"]
+    clientes=controladorLista.listando()
+    documentos=set([])
+    print (clientes)
+    documento=int(documento)
+    
+    for i in clientes:
+        documentos.add(i[0])
+        print (documentos)
+    if documento in documentos:
+        return redirect(url_for('crearCliente'))
+    else:
+        documento=str(documento)
+        controladorRegistro.RegistrarCliente(documento, nombre, movil, direccion, saldo)
+        return redirect(url_for('index'))
 
-            if len(busqueda)!=0:
-                print("  El cliente que Modificara es: \n")
-                print("Documento | Nombre | Movil | Direccion | Saldo")
-                print(busqueda[0])
-                
-                print(' Que desea modificar?:')
-                print(' 1. Movil')
-                print(' 2. Direccion')
-                opcion=int(input(' DIGITE SU OPCION:  '))
-                
-                if opcion==1:
-                    print(' ')
-                    movil=input(' Ingrese el nuevo movil del Cliente: ')
-                    actualiza=controladorActualizar.ActualizaMovil(documento,movil)
-                    print(' Se ha actualizado correctamente ')
-                    
-                elif opcion==2:
-                    print(' ')  
-                    direccion=input(' Ingrese la Nueva Direccion') 
-                    actualiza=controladorActualizar.ActualizarDireccion(documento,direccion)
-                    print(' Se ha actualizado correctamente ')  
-            else:
-                print("  Cliente no encontrado.")
-            
-            
-        except Exception as Ex:
-            pass
-        
-    elif opcion==4:
-        try:
-            print(' ')
-            print('  AGREGAR SALDO  ')
-            documento=input(' Ingrese el documento del Cliente: ')
-            
-            busqueda=controladorBusqueda.BuscarCliente(documento)
+@app.route('/modificarCliente')
+def modificarCliente():
+    return render_template('modificarC.html')
 
-            if len(busqueda)!=0:
-                print("  El saldo del cliente ingresado es: \n")
-                print("Nombre | Saldo")
-                saldo = busqueda[0][4]
-                print(busqueda[0][1]," | ",saldo)
-                print("")
-                print("  MENU SALDO  ")
-                print(" 1. Agregar abono al saldo pendiente.")
-                print(" 2. Agregar saldo pendiente.")
-                print(" 3. Salir.")
-                eleccion = int(input(" ¿Que desea hacer?  "))
-                if eleccion == 1:
-                    ingreso = int(input(' Ingrese el abono al saldo del Cliente: '))
-                    if ingreso> saldo:
-                        print("  No puede abonar mas dinero del que debe, debe: $", saldo, " e ingreso: $", ingreso)
-                    else:
-                        saldoNuevo=saldo-ingreso
-                        controladorSaldo.CambiarDeuda(documento,saldoNuevo)
+@app.route('/actualizarCuenta')
+def modificaDeuda():
+    return render_template('modificarD.html')
 
-                        busqueda=controladorBusqueda.BuscarCliente(documento)
-                    print("\n La deuda del cliente queda en: ", busqueda[0][4])
-                elif eleccion == 2:
-                    ingreso = int(input(' Ingrese la nueva deuda del Cliente: '))
-                    saldoNuevo=saldo+ingreso
-                    controladorSaldo.CambiarDeuda(documento,saldoNuevo)
-                    busqueda=controladorBusqueda.BuscarCliente(documento)
-                    print("\n La deuda del cliente queda en: ", busqueda[0][4])
-                else:
-                    print("  Opcion desconocida.")
-            else:
-                print("  Cliente no encontrado.")
-        except Exception as Ex:
-            print ('ha ocurrido un error, verifique los datos')
+
+if __name__=='__main__':
+    app.run(debug=True, port=7000)

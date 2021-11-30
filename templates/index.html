@@ -19,13 +19,15 @@
                 </tr>
             </thead>
             <tbody>
+                {% for cliente in clientes %}
                 <tr> 
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{cliente[1]}}</td>
+                    <td>{{cliente[0]}}</td>
+                    <td>{{cliente[2]}}</td>
+                    <td>{{cliente[3]}}</td>
+                    <td>{{cliente[4]}}</td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </section>
