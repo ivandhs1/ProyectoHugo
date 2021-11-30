@@ -2,8 +2,8 @@
 {% block body %}
 <main class="mainModif">
     <div class="buscar1">
-        <form action="">
-            <input type="text" placeholder="Buscar">
+        <form action="/modificandoCliente" method="POST">
+            <input name="documentoBuscar" type="text" placeholder="Buscar">
             <button type="submit"><img src="static/images/buscar.png" alt=""></button>
         </form>
     </div>
@@ -17,7 +17,6 @@
                 <label for="numero_cel">Numero celular:</label>
                 <input type="text" name="numero_cel" id="numero_cel" value="???????">
             </div>
-            <button  type="submit" class="enviar"> Modificar</button>
         </form>
     </section>
     

@@ -48,13 +48,13 @@ def modificarCliente():
 @app.route('/modificandoCliente', methods=["POST"])
 def modificandoCliente():
     documento = request.form["documentoBuscar"]
-    cliente=controladorBusqueda.BuscarCliente(documento)
+    cliente=controladorBusqueda.BuscarCliente2(documento)
     return render_template('modificandoCliente.html',cliente=cliente, documento=documento)
 
 @app.route('/clienteModificado',methods=["POST"])
 def clienteModificado():
     documento = request.form["documento"]
-    direccion = request.form["direcccion"]
+    direccion = request.form["direccion"]
     movil = request.form["numero_cel"]
     cliente=controladorActualizar.actualizarCliente(documento,movil,direccion)
     return redirect(url_for('index'))
