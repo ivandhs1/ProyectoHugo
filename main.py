@@ -45,6 +45,21 @@ def creandoCliente():
 def modificarCliente():
     return render_template('modificarC.html')
 
+@app.route('/modificandoCliente', methods=["POST"])
+def modificandoCliente():
+    documento = request.form["documentoBuscar"]
+    cliente=controladorBusqueda.BuscarCliente2(documento)
+    return render_template('modificandoCliente.html',cliente=cliente, documento=documento)
+
+@app.route('/clienteModificado',methods=["POST"])
+def clienteModificado():
+    documento = request.form["documento"]
+    direccion = request.form["direccion"]
+    movil = request.form["numero_cel"]
+    cliente=controladorActualizar.actualizarCliente(documento,movil,direccion)
+    return redirect(url_for('index'))
+    
+
 @app.route('/actualizarCuenta')
 def modificaDeuda():
     return render_template('modificarD.html')

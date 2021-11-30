@@ -8,15 +8,17 @@
         </form>
     </div>
     <section class="creacion">
-        <form action="???????????" method="POST" class="formulario" >
+        <form action="{{url_for('clienteModificado')}}" method="POST" class="formulario" >
             <div class="crear">
                 <label for="direccion">Direccion:</label>
-                <input type="text" name="direccion" id="direccion" value="???????">
+                <input value="{{cliente[0]}}" type="text" name="direccion" id="direccion" value="???????">
             </div>
             <div class="crear">
                 <label for="numero_cel">Numero celular:</label>
-                <input type="text" name="numero_cel" id="numero_cel" value="???????">
+                <input value="{{cliente[1]}}" type="text" name="numero_cel" id="numero_cel" value="???????">
             </div>
+            <input type="hidden" value="{{documento}}" name="documento">
+            <button  type="submit" class="enviar"> Modificar</button>
         </form>
     </section>
     
