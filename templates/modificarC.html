@@ -1,6 +1,10 @@
 {% extends 'layout.html' %}
 {% block body %}
-<main class="mainCrear">
+<main class="mainModif">
+    <div class="buscar1">
+        <input type="text" placeholder="Buscar">
+        <a href="/modificar_cliente"><img src="static/images/buscar.png" alt=""></a>
+    </div>
     <section class="creacion">
         <form action="???????????" method="POST" class="formulario" >
             <div class="crear">
@@ -14,5 +18,6 @@
             <button  type="submit" class="enviar"> Modificar</button>
         </form>
     </section>
+    
 </main>
 {% endblock %}
