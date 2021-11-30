@@ -1,8 +1,10 @@
 {% extends 'layout.html' %}
 {% block busqueda %}
 <div class="buscar">
-    <input type="text" placeholder="Buscar">
-    <a href="/index"><img src="static/images/buscar.png" alt=""></a>
+    <form action="/indexBuscando" method="POST">
+        <input name="documentoBuscar" type="text" placeholder="Buscar">
+        <button class="buttonBuscar" type="submit"><img src="static/images/buscar.png" alt=""></button>
+    </form>
 </div>
 {% endblock %}
 {% block body %}

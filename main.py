@@ -11,6 +11,12 @@ def index():
     clientes=controladorLista.listando()
     return render_template('index.html',clientes=clientes)
 
+@app.route('/indexBuscando', methods=["POST"])
+def indexBuscado():
+    documento = request.form["documentoBuscar"]
+    clientes=controladorBusqueda.BuscarCliente(documento)
+    return render_template('index.html',clientes=clientes)
+
 @app.route('/crearCliente')
 def crearCliente():
     return render_template('crearC.html')
@@ -24,12 +30,10 @@ def creandoCliente():
     saldo = request.form["saldo"]
     clientes=controladorLista.listando()
     documentos=set([])
-    print (clientes)
     documento=int(documento)
     
     for i in clientes:
         documentos.add(i[0])
-        print (documentos)
     if documento in documentos:
         return redirect(url_for('crearCliente'))
     else:

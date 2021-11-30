@@ -161,6 +161,10 @@ tr:nth-child(even){
     border-right: solid 1px black;
 }
 
+.buttonBuscar{
+    width: 10%;
+}
+
 /*CREAR CLIENTE*/
 .creacion{
     width: 100%;
