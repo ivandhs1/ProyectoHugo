@@ -38,14 +38,24 @@ header .logo{
     align-items: center;
     background-color: rgb(213,222,239);
 }
-.buscar a{
-    width: 10%;
+.buscar form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
-.buscar img{
+.buscar form img{
     width: 99%;
 }
-.buscar input{
+.buscar form button{
+    width: 12%;
+    background-color: none;
+    background: none;
+    border: none;
+}
+.buscar form input{
     width: 80%;
     height: 3rem;
     font-size: 40px;
@@ -208,20 +218,30 @@ tr:nth-child(even){
     background-color: rgb(213,222,239);
     margin-top: 10px;
 }
-.buscar2 a{
-    width: 10%;
+.buscar2 form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
-.buscar2 img{
-    width: 99%;
+.buscar2 form img{
+    width: 90%;
 }
-.buscar2 input{
+.buscar2 form button{
+    width: 10%;
+    background: none;
+    border: none;
+}
+.buscar2 form input{
     width: 80%;
     height: 50px;
     font-size: 40px;
     background-color: rgb(213,222,239);
     border:none;
 }
+
 .modifDeud{
     display: flex;
     flex-direction: column;
@@ -262,7 +282,7 @@ tr:nth-child(even){
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     margin-top: 10px;
 }
 .buscar1{
@@ -273,17 +293,27 @@ tr:nth-child(even){
     justify-content: space-around;
     align-items: center;
     background-color: rgb(213,222,239);
-    margin-right: 12%;
     margin-top: 10px;
 }
-.buscar1 a{
-    width: 10%;
+.buscar1 form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
 }
-
-.buscar1 img{
-    width: 99%;
+.buscar1 form img{
+    width: 90%;
 }
-.buscar1 input{
+.buscar1 form button{
+    width: 12%;
+    height: 50px;
+    font-size: 40px;
+    background-color: rgb(213,222,239);
+    border:none;
+    background: none;
+}
+.buscar1 form input{
     width: 80%;
     height: 50px;
     font-size: 40px;
