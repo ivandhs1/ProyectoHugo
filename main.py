@@ -28,7 +28,7 @@ def creandoCliente():
     direccion = request.form["direccion"]
     movil = request.form["numeroCel"]
     deuda = request.form["saldo"]
-    aFavor = 0
+    a_favor = 0
     clientes=controladorLista.listando()
     documentos=set([])
     documento=int(documento)
@@ -39,7 +39,7 @@ def creandoCliente():
         return redirect(url_for('crearCliente'))
     else:
         documento=str(documento)
-        controladorRegistro.RegistrarCliente(documento, nombre, movil, direccion, deuda, aFavor)
+        controladorRegistro.RegistrarCliente(documento, nombre, movil, direccion, deuda, a_favor)
         return redirect(url_for('index'))
 
 @app.route('/modificarCliente')
@@ -79,8 +79,8 @@ def actualizandoDeuda():
         
         if request.form.get('Deuda') == 'Deuda':
             
-            aFavor=controladorSaldo.aFavor(documento)
-            aFavorActual=int(aFavor[0])
+            a_favor=controladorSaldo.aFavor(documento)
+            aFavorActual=int(a_favor[0])
             
             if aFavorActual==0:
                 deuda=(controladorSaldo.Deuda(documento))
@@ -120,9 +120,9 @@ def actualizandoDeuda():
                 deudaActual=deudaActual-monto
                 
                 if deudaActual<0:
-                    aFavor=deudaActual*(-1)
+                    a_favor=deudaActual*(-1)
                     deudaActual=0
-                    cliente=controladorSaldo.CambiarAFavor(aFavor,documento)
+                    cliente=controladorSaldo.CambiarAFavor(a_favor,documento)
                     cliente=controladorSaldo.CambiarDeuda(deudaActual,documento)
                     cliente=controladorBusqueda.BuscarCliente3(documento)
                     return render_template('modificandoDeuda.html', cliente=cliente, documento=documento)

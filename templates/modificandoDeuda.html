@@ -29,15 +29,15 @@
     </section>
 
     <section class="modifDeud">
-        <form action="/actualizandoDeuda" method="POST" >
-            <input name="montoIng" type="text" placeholder="Ingrese monto">
+        <form action="/actualizandoDeuda" method="POST">
+            <input type="text" placeholder="Ingrese monto" name="montoIng">
             <input type="hidden" name="documento" value="{{documento}}">
             <div class="botonesDeuda">
                 <div class="botonDeu1">
-                    <input class="deuda" type="submit" name="Deuda" value="Deuda">
+                    <input class="botonn" type="submit" name="Deuda" value="Deuda">
                 </div>
                 <div class="botonDeu1">
-                    <input class="afavor" type="submit" name="A Favor" value="A Favor">
+                    <input class="botonn" type="submit" name="A Favor" value="A Favor">
                 </div>
             </div>
         </form>

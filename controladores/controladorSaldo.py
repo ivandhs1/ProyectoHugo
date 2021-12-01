@@ -7,11 +7,11 @@ def CambiarDeuda(deudaActual, documento):
     conexion.commit()
     conexion.close()
     
-def CambiarAFavor(aFavor, documento):
+def CambiarAFavor(a_favor, documento):
     conexion = Obtener_Conexion()
 
     with conexion.cursor() as cursor:
-        cursor.execute("UPDATE clientes SET aFavor = %s WHERE documento = %s ",(aFavor,documento))
+        cursor.execute("UPDATE clientes SET a_favor = %s WHERE documento = %s ",(a_favor,documento))
     conexion.commit()
     conexion.close()
     
@@ -29,7 +29,7 @@ def aFavor(documento):
     conexion = Obtener_Conexion()
     aFavor=[]
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT aFavor FROM clientes Where documento = %s",(documento))
+        cursor.execute("SELECT a_favor FROM clientes Where documento = %s",(documento))
         aFavor=cursor.fetchone()
     conexion.close()
     return aFavor

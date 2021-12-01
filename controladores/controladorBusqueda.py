@@ -22,7 +22,7 @@ def BuscarCliente3(documento):
     conexion = Obtener_Conexion()
     
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT nombre, deuda, aFavor from clientes where documento = %s",(documento))
+        cursor.execute("SELECT nombre, deuda, a_favor from clientes where documento = %s",(documento))
         cliente = cursor.fetchone()
     conexion.close()
     return cliente
