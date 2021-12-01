@@ -107,6 +107,7 @@ footer h1{
 }
 .blue{
     padding: 10px;
+    margin: 0 5px 0 5px;
     background-color: rgb(134,218,254);
     font-size: 200%;
     text-decoration: none;
@@ -344,8 +345,38 @@ tr:nth-child(even){
     .buscar{
         margin-bottom: 10px;
     }
+    .boton1{
+        flex-wrap: wrap;
+    }
+    .red{
+        margin: 5px 0 5px 0;
+    }
+    .logo img{
+        width: 90%;
+    }
+    .logo{
+        margin: 10px;
+    }
+    header{
+        box-sizing: inherit;
+    }
+    .enviar{
+        padding: 2% 3% 2% 3%;
+        border-radius: 100px;
+        background-color: rgb(134,218,254);
+        border: none;
+        margin-bottom: 10px;
+    }
+    .modifDeud input{
+        width: 25%;
+        text-align: center;
+        background-color: rgb(134,218,254);
+        height: 5rem;
+        font-size: 150%;
+        border: none;
+    }
 }
-@media (max-width:1145px) {
+@media (max-width:900px){
     header{
         height: 10rem;
         width: 100%;
@@ -354,7 +385,9 @@ tr:nth-child(even){
         justify-content: space-around;
         align-items: flex-start;
         background-color: rgb(249,208,4);
-        
+    }
+    .buscar{
+        margin-bottom: 10px;
     }
     .boton1{
         flex-wrap: wrap;
@@ -385,5 +418,13 @@ tr:nth-child(even){
         height: 5rem;
         font-size: 150%;
         border: none;
+    }
+    .crear input{
+        width: 300px;
+    }
+}
+@media (max-width:810px){
+    .blue{
+        order: 1;
     }
 }
