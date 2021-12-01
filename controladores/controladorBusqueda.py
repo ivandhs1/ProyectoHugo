@@ -17,4 +17,14 @@ def BuscarCliente2(documento):
         cliente = cursor.fetchone()
     conexion.close()
     return cliente
+
+def BuscarCliente3(documento):
+    conexion = Obtener_Conexion()
+    
+    with conexion.cursor() as cursor:
+        cursor.execute("SELECT nombre, saldo from clientes where documento = %s",(documento))
+        cliente = cursor.fetchone()
+    conexion.close()
+    return cliente
+
     
