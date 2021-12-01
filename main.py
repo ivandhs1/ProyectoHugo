@@ -136,6 +136,7 @@ def actualizandoDeuda():
                     cliente=controladorSaldo.CambiarDeuda(deudaActual,documento)
                     cliente=controladorBusqueda.BuscarCliente3(documento)
                     return render_template('modificandoDeuda.html', cliente=cliente, documento=documento)
-                
+    
+                    
 if __name__=='__main__':
     app.run(debug=True, port=7000)
