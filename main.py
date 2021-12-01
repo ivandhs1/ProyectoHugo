@@ -64,6 +64,12 @@ def clienteModificado():
 def modificaDeuda():
     return render_template('modificarD.html')
 
+@app.route('/modificandoDeuda', methods=["POST"])
+def modificandoDeuda():
+    documento= request.form["documentoBuscar"]
+    cliente=controladorBusqueda.BuscarCliente3(documento)
+    return render_template('modificandoDeuda.html', cliente=cliente)
+
 
 if __name__=='__main__':
     app.run(debug=True, port=7000)
