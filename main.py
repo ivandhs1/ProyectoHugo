@@ -79,21 +79,63 @@ def actualizandoDeuda():
         
         if request.form.get('Deuda') == 'Deuda':
             
-            deuda=(controladorSaldo.Deuda(documento))
-            print("xxxxx")
-            print(deuda)
-            print("xxxxx")
-            deudaActual=int(deuda[0])
-            print("XXXXX")
-            print(deudaActual)
-            deudaActual=deudaActual+monto
-            controladorSaldo.CambiarDeuda(deudaActual, documento)
-            cliente=controladorBusqueda.BuscarCliente3(documento)
-            return render_template('modificandoDeuda.html', cliente=cliente, documento=documento)
-        
+            aFavor=controladorSaldo.aFavor(documento)
+            aFavorActual=int(aFavor[0])
+            
+            if aFavorActual==0:
+                deuda=(controladorSaldo.Deuda(documento))
+                deudaActual=int(deuda[0])
+                deudaActual=deudaActual+monto
+                controladorSaldo.CambiarDeuda(deudaActual, documento)
+                cliente=controladorBusqueda.BuscarCliente3(documento)
+                return render_template('modificandoDeuda.html', cliente=cliente, documento=documento)
+
+            elif aFavorActual>0:
+                deuda=(controladorSaldo.Deuda(documento))
+                deudaActual=int(deuda[0])
+                resultado=aFavorActual-monto
+                
+                if resultado<0:
+                    deudaActual=resultado*(-1)
+                    aFavorActual=0
+                    cliente=controladorSaldo.CambiarDeuda(deudaActual,documento)
+                    cliente=controladorSaldo.CambiarAFavor(aFavorActual, documento)
+                    cliente=controladorBusqueda.BuscarCliente3(documento)
+                    return render_template('modificandoDeuda.html', cliente=cliente, documento=documento)
+                
+                elif resultado>=0:
+                    aFavorActual=resultado
+                    deudaActual=0
+                    cliente=controladorSaldo.CambiarDeuda(deudaActual,documento)
+                    cliente=controladorSaldo.CambiarAFavor(aFavorActual, documento)
+                    cliente=controladorBusqueda.BuscarCliente3(documento)
+                    return render_template('modificandoDeuda.html', cliente=cliente, documento=documento)
+                
         elif request.form.get('A Favor') == 'A Favor':
-            print ("a favor")
-
-
+            
+            deuda=controladorSaldo.Deuda(documento)
+            deudaActual=int(deuda[0])
+            
+            if deudaActual>0:
+                deudaActual=deudaActual-monto
+                
+                if deudaActual<0:
+                    aFavor=deudaActual*(-1)
+                    deudaActual=0
+                    cliente=controladorSaldo.CambiarAFavor(aFavor,documento)
+                    cliente=controladorSaldo.CambiarDeuda(deudaActual,documento)
+                    cliente=controladorBusqueda.BuscarCliente3(documento)
+                    return render_template('modificandoDeuda.html', cliente=cliente, documento=documento)
+                
+                elif deudaActual>0:
+                    cliente=controladorSaldo.CambiarDeuda(deudaActual,documento)
+                    cliente=controladorBusqueda.BuscarCliente3(documento)
+                    return render_template('modificandoDeuda.html', cliente=cliente, documento=documento)
+                
+                else:
+                    cliente=controladorSaldo.CambiarDeuda(deudaActual,documento)
+                    cliente=controladorBusqueda.BuscarCliente3(documento)
+                    return render_template('modificandoDeuda.html', cliente=cliente, documento=documento)
+                
 if __name__=='__main__':
     app.run(debug=True, port=7000)
