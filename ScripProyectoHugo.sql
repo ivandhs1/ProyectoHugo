@@ -6,6 +6,7 @@ CREATE TABLE clientes
 	nombre char(70),
     movil char(20),
     direccion char(50),
-    saldo int
+    deuda int
+    a_favor int
 );
     

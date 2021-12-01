@@ -27,7 +27,8 @@ def creandoCliente():
     documento = request.form["numeroDoc"]
     direccion = request.form["direccion"]
     movil = request.form["numeroCel"]
-    saldo = request.form["saldo"]
+    deuda = request.form["saldo"]
+    aFavor = 0
     clientes=controladorLista.listando()
     documentos=set([])
     documento=int(documento)
@@ -38,7 +39,7 @@ def creandoCliente():
         return redirect(url_for('crearCliente'))
     else:
         documento=str(documento)
-        controladorRegistro.RegistrarCliente(documento, nombre, movil, direccion, saldo)
+        controladorRegistro.RegistrarCliente(documento, nombre, movil, direccion, deuda, aFavor)
         return redirect(url_for('index'))
 
 @app.route('/modificarCliente')
@@ -68,7 +69,30 @@ def modificaDeuda():
 def modificandoDeuda():
     documento= request.form["documentoBuscar"]
     cliente=controladorBusqueda.BuscarCliente3(documento)
-    return render_template('modificandoDeuda.html', cliente=cliente)
+    return render_template('modificandoDeuda.html', cliente=cliente, documento=documento)
+
+@app.route('/actualizandoDeuda', methods=["POST"])
+def actualizandoDeuda():
+    if request.method == 'POST':
+        monto =int(request.form['montoIng'])
+        documento = request.form['documento']
+        
+        if request.form.get('Deuda') == 'Deuda':
+            
+            deuda=(controladorSaldo.Deuda(documento))
+            print("xxxxx")
+            print(deuda)
+            print("xxxxx")
+            deudaActual=int(deuda[0])
+            print("XXXXX")
+            print(deudaActual)
+            deudaActual=deudaActual+monto
+            controladorSaldo.CambiarDeuda(deudaActual, documento)
+            cliente=controladorBusqueda.BuscarCliente3(documento)
+            return render_template('modificandoDeuda.html', cliente=cliente, documento=documento)
+        
+        elif request.form.get('A Favor') == 'A Favor':
+            print ("a favor")
 
 
 if __name__=='__main__':
