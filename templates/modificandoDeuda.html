@@ -12,13 +12,15 @@
             <thead>
                 <tr> 
                     <th class="agrandar">Nombre</th>
-                    <th class="agrandar">Deuda pendiente</th>
+                    <th class="agrandar">Deuda</th>
+                    <th class="agrandar">A Favor</th>
                 </tr>
             </thead>
             <tbody>
                 <tr> 
                     <td class="agrandar">{{cliente[0]}}</td>
                     <td class="agrandar">{{cliente[1]}}</td>
+                    <td class="agrandar">{{cliente[2]}} </td>
                 </tr>
             </tbody>
         </table>
@@ -27,14 +29,15 @@
     </section>
 
     <section class="modifDeud">
-        <form action="">
-            <input type="text" placeholder="Ingrese monto">
+        <form action="/actualizandoDeuda" method="POST" >
+            <input name="montoIng" type="text" placeholder="Ingrese monto">
+            <input type="hidden" name="documento" value="{{documento}}">
             <div class="botonesDeuda">
                 <div class="botonDeu1">
-                    <button type="submit">Deuda</button>
+                    <input class="deuda" type="submit" name="Deuda" value="Deuda">
                 </div>
                 <div class="botonDeu1">
-                    <button type="submit">A favor</button>
+                    <input class="afavor" type="submit" name="A Favor" value="A Favor">
                 </div>
             </div>
         </form>

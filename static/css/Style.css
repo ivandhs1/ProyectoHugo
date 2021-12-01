@@ -331,6 +331,7 @@ tr:nth-child(even){
     background-color: rgb(213,222,239);
     border:none;
 }
+
 @media (max-width:1145px) {
     header{
         height: 10rem;
