@@ -27,8 +27,8 @@ def creandoCliente():
     documento = request.form["numeroDoc"]
     direccion = request.form["direccion"]
     movil = request.form["numeroCel"]
-    deuda = request.form["saldo"]
-    a_favor = 0
+    deuda = request.form["deuda"]
+    a_favor = request.form["a_favor"]
     clientes=controladorLista.listando()
     documentos=set([])
     documento=int(documento)
