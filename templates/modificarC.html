@@ -20,5 +20,31 @@
         </form>
     </section>
     
+    <div>
+
+        {% with mensaje = get_flashed_messages() %}
+    
+        {% if mensaje %}
+        {% if mensaje[0] == 'alerta1' %}
+        <div>
+    
+            <h2> ESTE CLIENTE NO EXISTE</h2>
+    
+        </div>
+        {% elif mensaje[0] == 'alerta2' %}
+
+        <div>
+    
+            <h2> INGRESE SOLAMENTE NUMEROS EN EL TELEFONO</h2>
+    
+        </div>
+
+        {% endif %}
+        {% endif %}
+    
+    {% endwith %}
+    
+    </div>
+
 </main>
 {% endblock %}
