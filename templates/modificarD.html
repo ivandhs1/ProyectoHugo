@@ -11,9 +11,9 @@
         <table class="tabla_Index">
             <thead>
                 <tr> 
-                    <th class="agrandar">Nombre</th>
-                    <th class="agrandar">Deuda</th>
-                    <th class="agrandar">A Favor</th>
+                    <th class="borde1">Nombre</th>
+                    <th class="bordeN">Deuda</th>
+                    <th class="borde2">A Favor</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,13 +28,16 @@
         
     </section>
 
-    <div>
 
-        {% with mensaje = get_flashed_messages() %}
+        
+    
+
+</main>
+{% with mensaje = get_flashed_messages() %}
     
         {% if mensaje %}
         {% if mensaje[0] == 'alerta1' %}
-        <div>
+        <div class="flash1">
     
             <h2> ESTE CLIENTE NO EXISTE </h2>
     
@@ -42,9 +45,5 @@
         {% endif %}
         {% endif %}
     
-    {% endwith %}
-    
-    </div>
-
-</main>
+        {% endwith %}
 {% endblock %}

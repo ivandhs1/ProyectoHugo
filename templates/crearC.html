@@ -32,23 +32,24 @@
         </form>
     </section>
 
-    <div>
-
-        {% with mensaje = get_flashed_messages() %}
     
-        {% if mensaje %}
-        {% if mensaje[0] == 'alerta' %}
-        <div>
-    
-            <h2> SE HA PRODUCIDO UN ERROR VERIFIQUE LOS DATOS INGRESADOS</h2>
-    
-        </div>
-        {% endif %}
-        {% endif %}
-    
-    {% endwith %}
-    
-    </div>
 
 </main>
+<div>
+
+    {% with mensaje = get_flashed_messages() %}
+
+    {% if mensaje %}
+    {% if mensaje[0] == 'alerta' %}
+    <div class="flash1">
+
+        <h2> SE HA PRODUCIDO UN ERROR VERIFIQUE LOS DATOS INGRESADOS</h2>
+
+    </div>
+    {% endif %}
+    {% endif %}
+
+{% endwith %}
+
+</div>
 {% endblock %}

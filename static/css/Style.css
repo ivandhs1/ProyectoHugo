@@ -105,6 +105,9 @@ footer h1{
     text-decoration: none;
     color: white;
 }
+.red:hover{
+    background-color: rgb(187, 62, 58);
+}
 .blue{
     padding: 10px;
     margin: 0 5px 0 5px;
@@ -112,6 +115,9 @@ footer h1{
     font-size: 200%;
     text-decoration: none;
     color: black;
+}
+.blue:hover{
+    background-color: rgb(83, 190, 236);
 }
 .cabeza{
     display: flex;
@@ -221,6 +227,9 @@ tr:nth-child(even){
     border: none;
     margin-bottom: 10px;
 }
+.enviar:hover{
+    background-color: rgb(83, 190, 236);
+}
 /*MODIFICAR DEUDA*/
 .buscar2{
     width: 35%;
@@ -276,6 +285,18 @@ tr:nth-child(even){
     padding: 2% 3% 2% 3%;
     border-radius: 200px;
 }
+.botonDeu1:hover{
+    background-color: rgb(197, 166, 7);
+}
+.modifDeud form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.modifDeud form label{
+    font-size: 180%;
+}
 .botonDeu1 .botonn{
     text-decoration: none;
     color: black;
@@ -287,7 +308,6 @@ tr:nth-child(even){
     width: 100%;
     text-align: center;
     background-color: rgb(134,218,254);
-    height: 5rem;
     font-size: 250%;
     border: none;
 }
@@ -439,4 +459,24 @@ tr:nth-child(even){
     .blue{
         order: 1;
     }
+}
+/*FLASHES*/
+.flash1{
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.flash1 h2{
+    text-align: center;
+    background-color:  rgb(175, 231, 255);
+    border-radius: 20px;
+    padding: 8px 5px 8px 5px;
+    width: 30%;
+}
+input{
+    padding-left: 5px;
+    font-size: 60%;
 }
