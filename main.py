@@ -34,7 +34,8 @@ def creandoCliente():
         a_favor = request.form["a_favor"]
         
         
-        try: 
+        
+        try:
             deuda=deuda.replace(",","")
             deuda=deuda.replace(".","")
             a_favor=a_favor.replace(",","")
@@ -43,6 +44,22 @@ def creandoCliente():
         except Exception as Ex:
             deuda = deuda
             a_favor=a_favor
+
+        deuda=int(deuda)
+        a_favor=int(a_favor)
+
+        if deuda>a_favor:
+            deuda=deuda-a_favor
+            a_favor=0
+
+        elif deuda==a_favor:
+            deuda=0
+            a_favor=0
+
+        elif a_favor>deuda:
+            a_favor=a_favor-deuda
+            deuda=0
+
 
         clientes=controladorLista.listando()
         documentos=set([])
