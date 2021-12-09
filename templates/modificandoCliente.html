@@ -10,11 +10,11 @@
     <section class="creacion">
         <form action="{{url_for('clienteModificado')}}" method="POST" class="formulario" >
             <div class="crear">
-                <label for="direccion">Direccion:</label>
+                <label for="direccion">Dirección:</label>
                 <input value="{{cliente[0]}}" type="text" name="direccion" id="direccion" value="???????">
             </div>
             <div class="crear">
-                <label for="numero_cel">Numero celular:</label>
+                <label for="numero_cel">Número de celular:</label>
                 <input value="{{cliente[1]}}" type="text" name="numero_cel" id="numero_cel" value="???????">
             </div>
             <input type="hidden" value="{{documento}}" name="documento">
