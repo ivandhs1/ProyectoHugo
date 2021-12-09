@@ -1,4 +1,5 @@
 
+import re
 from werkzeug.utils import redirect
 from controladores import controladorRegistro, controladorBusqueda, controladorActualizar, controladorSaldo, controladorLista
 from flask import Flask, render_template, request, url_for, flash
@@ -32,6 +33,17 @@ def creandoCliente():
         deuda = request.form["deuda"]
         a_favor = request.form["a_favor"]
         
+        
+        try: 
+            deuda=deuda.replace(",","")
+            deuda=deuda.replace(".","")
+            a_favor=a_favor.replace(",","")
+            a_favor=a_favor.replace(".","")
+        
+        except Exception as Ex:
+            deuda = deuda
+            a_favor=a_favor
+
         clientes=controladorLista.listando()
         documentos=set([])
         documento=int(documento)
@@ -39,6 +51,8 @@ def creandoCliente():
         for i in clientes:
             documentos.add(i[0])
         if documento in documentos:
+            alerta="alerta1"
+            flash(alerta)
             return redirect(url_for('crearCliente'))
         else:
             documento=str(documento)
@@ -48,6 +62,7 @@ def creandoCliente():
     except Exception as Ex:
         alerta="alerta"
         flash(alerta)
+        print(Ex)
         return redirect(url_for('crearCliente'))
 
 
