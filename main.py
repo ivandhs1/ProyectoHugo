@@ -140,7 +140,12 @@ def actualizandoDeuda():
     try:
 
         if request.method == 'POST':
-            monto =int(request.form['montoIng'])
+            monto =(request.form['montoIng'])
+            monto=monto.replace(",","")
+            monto=monto.replace(".","")
+            monto=int(monto)
+
+
             documento = request.form['documento']
             
             if request.form.get('Deuda') == 'Deuda':
