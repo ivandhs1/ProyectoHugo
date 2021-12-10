@@ -143,7 +143,11 @@ def actualizandoDeuda():
             monto =(request.form['montoIng'])
             monto=monto.replace(",","")
             monto=monto.replace(".","")
-            monto=int(monto)
+            try:
+                monto=int(monto)
+            except ValueError:
+                return render_template('modificarD.html')
+            
             documento = request.form['documento']
             
             if request.form.get('Deuda') == 'Deuda':
