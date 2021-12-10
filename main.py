@@ -144,8 +144,6 @@ def actualizandoDeuda():
             monto=monto.replace(",","")
             monto=monto.replace(".","")
             monto=int(monto)
-
-
             documento = request.form['documento']
             
             if request.form.get('Deuda') == 'Deuda':
@@ -184,6 +182,8 @@ def actualizandoDeuda():
                     
             elif request.form.get('A Favor') == 'A Favor':
                 
+                a_favor=controladorSaldo.aFavor(documento)
+                aFavorActual=int(a_favor[0])
                 deuda=controladorSaldo.Deuda(documento)
                 deudaActual=int(deuda[0])
                 
@@ -207,6 +207,15 @@ def actualizandoDeuda():
                         cliente=controladorSaldo.CambiarDeuda(deudaActual,documento)
                         cliente=controladorBusqueda.BuscarCliente3(documento)
                         return render_template('modificandoDeuda.html', cliente=cliente, documento=documento)
+                    
+                elif deudaActual==0:
+                    a_favor=aFavorActual+monto
+                    deudaActual=0
+                    cliente=controladorSaldo.CambiarAFavor(a_favor,documento)
+                    cliente=controladorSaldo.CambiarDeuda(deudaActual,documento)
+                    cliente=controladorBusqueda.BuscarCliente3(documento)
+                    return render_template('modificandoDeuda.html', cliente=cliente, documento=documento)
+                    
     except Exception as Ex:
         return redirect(url_for('modificandoDeuda', cliente=cliente, documento=documento))
                     
