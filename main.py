@@ -146,6 +146,8 @@ def actualizandoDeuda():
             try:
                 monto=int(monto)
             except ValueError:
+                alerta="alerta2"
+                flash(alerta)
                 return render_template('modificarD.html')
             
             documento = request.form['documento']
